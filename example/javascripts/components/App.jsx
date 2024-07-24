@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import NavLink from './NavLink';
 
 function constructLinks() {
@@ -36,9 +35,5 @@ function App(props) {
     </div>
   );
 }
-
-App.propTypes = {
-  children: PropTypes.element.isRequired
-};
 
 export default App;

@@ -20,12 +20,13 @@ module.exports = {
     ]
   },
   plugins: [
-    new CopyWebpackPlugin([
+    new CopyWebpackPlugin({
+      patterns: [
       {
         from: 'src/stylesheets/*',
-        flatten: true
+        to: "[name][ext]",
       }
-    ])
+    ]})
   ],
   output: {
     path: resolve(__dirname, 'lib'),

@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
 function Lorem(props) {
   return (
@@ -112,13 +111,5 @@ function Lorem(props) {
     </div>
   );
 }
-
-Lorem.propTypes = {
-  title: PropTypes.string
-};
-
-Lorem.defaultProps = {
-  title: ''
-};
 
 export default Lorem;

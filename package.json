@@ -1,6 +1,6 @@
 {
   "name": "react-splitter-layout",
-  "version": "4.0.0",
+  "version": "4.0.1-stellar",
   "description": "A simple split layout for React and modern browsers",
   "keywords": [
     "react",
@@ -8,14 +8,14 @@
     "split",
     "splitter"
   ],
-  "author": "Yang Liu <hi@zesik.com>",
+  "author": "Stellar Science Ltd Co",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/zesik/react-splitter-layout"
+    "url": "https://github.com/stellarscience/react-splitter-layout"
   },
   "bugs": {
-    "url": "https://github.com/zesik/react-splitter-layout/issues"
+    "url": "https://github.com/stellarscience/react-splitter-layout/issues"
   },
   "main": "lib/index.js",
   "files": [
@@ -48,8 +48,7 @@
     "webpack-dev-server": "^3.1.14"
   },
   "peerDependencies": {
-    "prop-types": "^15.5.0",
-    "react": "^15.5.0 || ^16.0.0"
+    "react": "^15.5.0 || ^16.0.0 || ^17.0.0 || ^18.0.0"
   },
   "scripts": {
     "prepublish": "webpack --progress",

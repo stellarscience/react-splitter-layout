@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import Pane from './Pane';
 
 function clearSelection() {
@@ -220,33 +219,5 @@ class SplitterLayout extends React.Component {
     );
   }
 }
-
-SplitterLayout.propTypes = {
-  customClassName: PropTypes.string,
-  vertical: PropTypes.bool,
-  percentage: PropTypes.bool,
-  primaryIndex: PropTypes.number,
-  primaryMinSize: PropTypes.number,
-  secondaryInitialSize: PropTypes.number,
-  secondaryMinSize: PropTypes.number,
-  onDragStart: PropTypes.func,
-  onDragEnd: PropTypes.func,
-  onSecondaryPaneSizeChange: PropTypes.func,
-  children: PropTypes.arrayOf(PropTypes.node)
-};
-
-SplitterLayout.defaultProps = {
-  customClassName: '',
-  vertical: false,
-  percentage: false,
-  primaryIndex: 0,
-  primaryMinSize: 0,
-  secondaryInitialSize: undefined,
-  secondaryMinSize: 0,
-  onDragStart: null,
-  onDragEnd: null,
-  onSecondaryPaneSizeChange: null,
-  children: []
-};
 
 export default SplitterLayout;
