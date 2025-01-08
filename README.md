@@ -13,11 +13,28 @@ A simple split layout for React and modern browsers.
 
 ## Dependencies
 
-React-splitter-layout depends on React. See [package.json](package.json#L50-L53) for more details.
+React-splitter-layout depends on React. See [package.json](package.json) for more details.
 
 ## Building
 
-Building requires yarn v1 and node. Versions 1.22.10 and 1.14.15 are known to work, respectively.
+Building requires yarn v1 and node. Versions 1.22.10 and 14.15.1 are known to work, respectively.
+
+```sh
+$ yarn install
+```
+
+## Publishing
+
+Publishing requires $HOME/.npmrc to be properly configured with the registry to publish to, and any required auth. When
+publishing, the version being published must (generally) not already exist in the target registry. For the Stellar
+Artifactory registry this is certainly the case, to ensure each published version is unique. The version can be
+explicitly set and committed prior to publishing, or a new version can be entered during the publish command which will
+create a new commit with the specified version (and a tag to match). Publishing is currently configured to fail if there
+are uncommitted changes.
+
+```sh
+$ yarn publish
+```
 
 ## Installation
 
@@ -49,32 +66,32 @@ $ npm run coverage
 
 1. Add `react-splitter-layout` dependency to your code.
 
-    ```sh
-    $ npm install --save react-splitter-layout
-    ```
+   ```sh
+   $ npm install --save react-splitter-layout
+   ```
 
 2. Include the library into your code and use it.
 
-    ```javascript
-    import React from 'react';
-    import SplitterLayout from 'react-splitter-layout';
-    import 'react-splitter-layout/lib/index.css';
+   ```javascript
+   import React from "react";
+   import SplitterLayout from "react-splitter-layout";
+   import "react-splitter-layout/lib/index.css";
 
-    class YourComponent extends React.Component {
-      render() {
-        return (
-          <SplitterLayout>
-            <div>Pane 1</div>
-            <div>Pane 2</div>
-          </SplitterLayout>
-        );
-      }
-    }
+   class YourComponent extends React.Component {
+     render() {
+       return (
+         <SplitterLayout>
+           <div>Pane 1</div>
+           <div>Pane 2</div>
+         </SplitterLayout>
+       );
+     }
+   }
 
-    export default YourComponent;
-    ```
+   export default YourComponent;
+   ```
 
-*Note: From version 4.0.0, you need to import CSS files or handle it in your favorite way explicitly.*
+_Note: From version 4.0.0, you need to import CSS files or handle it in your favorite way explicitly._
 
 ## Usage
 
@@ -85,82 +102,82 @@ and the only direct children occupies all available space.
 
 The `SplitterLayout` component supports the following props.
 
-* `customClassName: PropTypes.string`
+- `customClassName: PropTypes.string`
 
-    Custom CSS class name applied to the layout `div`. You can use this to customize layout style.
-    Refers to the [original stylesheet](src/stylesheets/index.css) to see what you can customize.
+  Custom CSS class name applied to the layout `div`. You can use this to customize layout style.
+  Refers to the [original stylesheet](src/stylesheets/index.css) to see what you can customize.
 
-* `vertical: PropTypes.bool`
+- `vertical: PropTypes.bool`
 
-    Determine whether the layout should be a horizontal split or a vertical split. The default value is `false`.
+  Determine whether the layout should be a horizontal split or a vertical split. The default value is `false`.
 
-* `percentage: PropTypes.bool`
+- `percentage: PropTypes.bool`
 
-    Determine whether the width of each pane should be calculated in percentage or by pixels.
-    The default value is `false`, which means width is calculated in pixels.
+  Determine whether the width of each pane should be calculated in percentage or by pixels.
+  The default value is `false`, which means width is calculated in pixels.
 
-* `primaryIndex: PropTypes.number`
+- `primaryIndex: PropTypes.number`
 
-    Index of the *primary pane*. Since `SplitterLayout` supports at most 2 children, only `0` or `1` is allowed.
-    The default value is `0`.
+  Index of the _primary pane_. Since `SplitterLayout` supports at most 2 children, only `0` or `1` is allowed.
+  The default value is `0`.
 
-    A *primary pane* is used to show users primary content, while a *secondary pane* is the other pane.
-    When window size changes and `percentage` is set to `false`,
-    primary pane's size is flexible and secondary pane's size is kept unchanged.
-    However, when the window size is not enough for showing both minimal primary pane and minimal secondary pane,
-    the primary pane's size is served first.
+  A _primary pane_ is used to show users primary content, while a _secondary pane_ is the other pane.
+  When window size changes and `percentage` is set to `false`,
+  primary pane's size is flexible and secondary pane's size is kept unchanged.
+  However, when the window size is not enough for showing both minimal primary pane and minimal secondary pane,
+  the primary pane's size is served first.
 
-* `primaryMinSize: PropTypes.number`
+- `primaryMinSize: PropTypes.number`
 
-    Minimal size of primary pane. The default value is 0.
+  Minimal size of primary pane. The default value is 0.
 
-    When `percentage` is set to `false`, this value is pixel size (25 means 25px).
-    When `percentage` is set to `true`, this value is percentage (25 means 25%).
+  When `percentage` is set to `false`, this value is pixel size (25 means 25px).
+  When `percentage` is set to `true`, this value is percentage (25 means 25%).
 
-* `secondaryMinSize: PropTypes.number`
+- `secondaryMinSize: PropTypes.number`
 
-    Minimal size of secondary pane.
+  Minimal size of secondary pane.
 
-* `secondaryInitialSize: PropTypes.number`
+- `secondaryInitialSize: PropTypes.number`
 
-    Initial size of secondary pane when page loads.
+  Initial size of secondary pane when page loads.
 
-    If this prop is not defined, `SplitterLayout` tries to split the layout with equal sizes.
-    (Note: equal size may not apply when there are nested layouts.)
+  If this prop is not defined, `SplitterLayout` tries to split the layout with equal sizes.
+  (Note: equal size may not apply when there are nested layouts.)
 
-* `onDragStart: PropTypes.func`
+- `onDragStart: PropTypes.func`
 
-    Called when dragging is started.
+  Called when dragging is started.
 
-    No parameter will be passed to event handlers.
+  No parameter will be passed to event handlers.
 
-* `onDragEnd: PropTypes.func`
+- `onDragEnd: PropTypes.func`
 
-    Called when dragging finishes.
+  Called when dragging finishes.
 
-    No parameter will be passed to event handlers.
+  No parameter will be passed to event handlers.
 
-* `onSecondaryPaneSizeChange: PropTypes.func`
+- `onSecondaryPaneSizeChange: PropTypes.func`
 
-    Called when the size of secondary pane is changed.
+  Called when the size of secondary pane is changed.
 
-    Event handlers will be passed with a single parameter of `number` type representing new size of secondary pane.
-    When `percentage` is set to `false`, the value is in pixel size.
-    When `percentage` is set to `true`, the value is in percentage.
+  Event handlers will be passed with a single parameter of `number` type representing new size of secondary pane.
+  When `percentage` is set to `false`, the value is in pixel size.
+  When `percentage` is set to `true`, the value is in percentage.
 
 ## Release History
 
-* 4.0.0
-  * Stylesheets are no longer integrated by default. It has to be handled in your favorite way explicitly.
-* 3.0.0
-  * Add dragging and size change events.
-  * Drop support of React earlier than 15.5.0.
-  * 100% code coverage test!
-* 0.2.1
-  * Fix an incorrect layout when nesting a horizontal splitter inside a vertical one,
+- 4.0.0
+  - Stylesheets are no longer integrated by default. It has to be handled in your favorite way explicitly.
+- 3.0.0
+  - Add dragging and size change events.
+  - Drop support of React earlier than 15.5.0.
+  - 100% code coverage test!
+- 0.2.1
+  - Fix an incorrect layout when nesting a horizontal splitter inside a vertical one,
     and now root element of the splitter is absolutely positioned.
-* 0.1.0
-  * First proper release.
+- 0.1.0
+  - First proper release.
 
 ## License
 
